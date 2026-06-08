@@ -20,6 +20,22 @@ public class Todo {
 
     private Integer priority;
 
+    public Todo() {
+    }
+
+    public Todo(String name, String description, Integer priority) {
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+    }
+
+    public Todo(String name, String description, boolean made, Integer priority) {
+        this.name = name;
+        this.description = description;
+        this.made = made;
+        this.priority = priority;
+    }
+
     public Long getId() {
         return id;
     }
