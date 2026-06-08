@@ -18,6 +18,7 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
+    @Transactional
     public List<Todo> create(Todo todo) {
         todoRepository.save(todo);
         return listAll();
@@ -35,11 +36,13 @@ public class TodoService {
         return todoRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
+    @Transactional
     public List<Todo> update(Todo todo) {
         todoRepository.save(todo);
         return listAll();
     }
 
+    @Transactional
     public List<Todo> delete(Long id) {
         todoRepository.deleteById(id);
         return listAll();
