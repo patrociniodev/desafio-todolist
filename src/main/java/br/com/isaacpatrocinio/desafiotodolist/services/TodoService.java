@@ -32,11 +32,6 @@ public class TodoService {
     }
 
     @Transactional
-    public Todo findById(Long id) {
-        return todoRepository.findById(id).orElseThrow(RuntimeException::new);
-    }
-
-    @Transactional
     public List<Todo> update(Todo todo) {
         todoRepository.save(todo);
         return listAll();

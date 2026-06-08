@@ -1,6 +1,7 @@
 package br.com.isaacpatrocinio.desafiotodolist.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
@@ -12,8 +13,10 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String description;
 
     private boolean made;
