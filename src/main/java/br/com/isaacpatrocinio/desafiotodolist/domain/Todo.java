@@ -19,7 +19,7 @@ public class Todo {
     @NotBlank
     private String description;
 
-    private boolean made;
+    private boolean done;
 
     private Integer priority;
 
@@ -32,10 +32,10 @@ public class Todo {
         this.priority = priority;
     }
 
-    public Todo(String name, String description, boolean made, Integer priority) {
+    public Todo(String name, String description, boolean done, Integer priority) {
         this.name = name;
         this.description = description;
-        this.made = made;
+        this.done = done;
         this.priority = priority;
     }
 
@@ -63,12 +63,12 @@ public class Todo {
         this.description = description;
     }
 
-    public boolean isMade() {
-        return made;
+    public boolean isDone() {
+        return done;
     }
 
-    public void setMade(boolean made) {
-        this.made = made;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 
     public Integer getPriority() {

@@ -35,15 +35,15 @@ public class TodoController {
         return ResponseEntity.created(uri).body(list);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<List<Todo>> update(@RequestBody Todo obj) {
-        List<Todo> list = todoService.update(obj);
-        return ResponseEntity.ok().body(list);
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo obj) {
+        Todo entity = todoService.update(id, obj);
+        return ResponseEntity.ok().body(entity);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public ResponseEntity<List<Todo>> delete(@PathVariable Long id) {
-        List<Todo> list = todoService.delete(id);
-        return ResponseEntity.ok().body(list);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        todoService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -3,7 +3,6 @@ package br.com.isaacpatrocinio.desafiotodolist;
 import br.com.isaacpatrocinio.desafiotodolist.domain.Todo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -28,7 +27,7 @@ public class DesafioTodolistApplicationTests {
 
     @Test
     void testCreateTodoSuccess() {
-        var todo = new Todo("Tarefa 32", "Lembretes pra mais tarde", false, 1);
+        var todo = new Todo("Tarefa 6", "Lembretes pra mais tarde", false, 1);
 
         webTestClient
                 .post()
@@ -41,7 +40,7 @@ public class DesafioTodolistApplicationTests {
                 .jsonPath("$.length()").isEqualTo(1)
                 .jsonPath("$[0].name").isEqualTo(todo.getName())
                 .jsonPath("$[0].description").isEqualTo(todo.getDescription())
-                .jsonPath("$[0].made").isEqualTo(todo.isMade())
+                .jsonPath("$[0].done").isEqualTo(todo.isDone())
                 .jsonPath("$[0].priority").isEqualTo(todo.getPriority());
     }
 

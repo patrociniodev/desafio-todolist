@@ -6,7 +6,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -32,9 +31,19 @@ public class TodoService {
     }
 
     @Transactional
-    public List<Todo> update(Todo todo) {
-        todoRepository.save(todo);
-        return listAll();
+    public Todo listById(Long id) {
+        return todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id not found"));
+    }
+
+    @Transactional
+    public Todo update(Long id, Todo todo) {
+        Todo existentTodo = listById(id);
+        existentTodo.setName(todo.getName());
+        existentTodo.setDescription(todo.getDescription());
+        existentTodo.setDone(todo.isDone());
+        existentTodo.setPriority(todo.getPriority());
+
+        return todoRepository.save(existentTodo);
     }
 
     @Transactional
